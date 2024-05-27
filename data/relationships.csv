@@ -1,0 +1,7 @@
+Multiplicity,From Table,From Column,To Table,To Column,Active,Cross Filtering Behavior,Security Filtering Behavior,Join On Date Behavior
+m:1,Date,Date,LocalDateTable_39c22ddb-27f3-4e6c-8a44-a3380850fcb4,Date,True,OneDirection,OneDirection,DatePartOnly
+m:1,Fact,BU Key,BU,BU Key,True,OneDirection,OneDirection,DateAndTime
+m:1,Fact,Scenario Key,Scenario,Scenario Key,True,OneDirection,OneDirection,DateAndTime
+m:1,Fact,YearPeriod,Date,YearPeriod,True,OneDirection,OneDirection,DateAndTime
+1:1,Executive,ID,Industry,ID,True,BothDirections,OneDirection,DateAndTime
+m:1,BU,Executive_id,Industry,ID,True,OneDirection,OneDirection,DateAndTime

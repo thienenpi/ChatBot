@@ -1,0 +1,45 @@
+Table Name,Measure Name,Measure Expression,Measure Data Type
+Fact,Total Revenue,SUM([Revenue]),Double
+Fact,Sum of Material Costs,SUM([Material Costs]),Double
+Fact,Sum of Labor Costs Variable,SUM([Labor Costs Variable]),Double
+Fact,Sum of Taxes,SUM([Taxes]),Double
+Fact,Sum of Rev for Exp Travel,SUM([Rev for Exp Travel]),Double
+Fact,Sum of Travel Expenses,SUM([Travel Expenses]),Double
+Fact,Sum of Cost Third Party,SUM([Cost Third Party]),Double
+Fact,Sum of Subscription Revenue,SUM([Subscription Revenue]),Double
+Fact,Gross Margin,[Total Revenue]-[Total COGS],Double
+Fact,GM%,"DIVIDE([Gross Margin],[Total Revenue])",Double
+Fact,YTD Revenue,"TOTALYTD(SUM([Revenue]),'Date'[Date])",Double
+Fact,Total COGS,[Sum of Material Costs]+[Sum of Labor Costs Variable]+[Sum of Taxes]+[Sum of Rev for Exp Travel]+[Sum of Travel Expenses]+[Sum of Cost Third Party],Double
+Fact,YTD COGS,"TOTALYTD([Total COGS],'Date'[Date])",Double
+Fact,YTD Gross Margin,"TOTALYTD([Gross Margin],'Date'[Date])",Double
+Fact,Revenue SPLY,"CALCULATE([Total Revenue],SAMEPERIODLASTYEAR('Date'[Date]))",Double
+Fact,Gross Margin SPLY,"CALCULATE([Gross Margin],SAMEPERIODLASTYEAR('Date'[Date]))",Double
+Fact,GM% SPLY,[Gross Margin SPLY]/[Revenue SPLY],Double
+Fact,YTD GM%,[YTD Gross Margin]/[YTD Revenue],Double
+Fact,YTD Revenue SPLY,"CALCULATE([YTD Revenue],SAMEPERIODLASTYEAR(DATESYTD('Date'[Date])))",Double
+Fact,COGS SPLY,"CALCULATE([Total COGS],SAMEPERIODLASTYEAR('Date'[Date]))",Double
+Fact,YTD COGS SPLY,"CALCULATE([YTD COGS],SAMEPERIODLASTYEAR(DATESYTD('Date'[Date])))",Double
+Fact,YTD GM% SPLY,[YTD GM SPLY]/[YTD Revenue SPLY],Double
+Fact,YTD GM SPLY,"CALCULATE([YTD Gross Margin],SAMEPERIODLASTYEAR(DATESYTD('Date'[Date])))",Double
+Fact,YoY Rev Var,[Total Revenue]-[Revenue SPLY],Double
+Fact,YoY GM Var,[Gross Margin]-[Gross Margin SPLY],Double
+Fact,YoY Rev Growth,"IF([Revenue SPLY],[YoY Rev Var]/[Revenue SPLY],BLANK())",Double
+Fact,YoY GM Growth,"IF([Gross Margin SPLY],[YoY GM Var]/[Gross Margin SPLY],BLANK())",Double
+Fact,YoY YTD Rev Var,[YTD Revenue]-[YTD Revenue SPLY],Double
+Fact,YoY COGS Var,[Total COGS]-[COGS SPLY],Double
+Fact,YoY YTD COGS Var,[YTD COGS]-[YTD COGS SPLY],Double
+Fact,YoY YTD GM% Var,[YTD GM%]-[YTD GM% SPLY],Double
+Fact,YoY YTD GM Var,[YTD Gross Margin]-[YTD GM SPLY],Double
+Fact,YoY GM %Var,[GM%]-[GM% SPLY],Double
+Fact,YoY YTD Rev Growth,"IF([YTD Revenue SPLY],[YoY YTD Rev Var]/[YTD Revenue SPLY],BLANK())",Double
+Fact,YoY COGS Growth,"IF([COGS SPLY],[YoY COGS Var]/[COGS SPLY],BLANK())",Double
+Fact,YoY YTD COGS Growth,"IF([YTD COGS SPLY],[YoY YTD COGS Var]/[YTD COGS SPLY],BLANK())",Double
+Fact,YoY YTD GM Growth,"IF([YTD GM SPLY],[YoY YTD GM Var]/[YTD GM SPLY],BLANK())",Double
+Fact,# of Customers,DISTINCTCOUNT([Customer Key]),Int64
+Fact,# of Products,DISTINCTCOUNT([Product Key]),Int64
+Fact,Revenue Budget,"CALCULATE([Total Revenue], FILTER(Scenario, Scenario[Scenario]=""Budget""))",Double
+Fact,Revenue Var to Budget,[RevenueTY]-[Revenue Budget],Double
+Fact,Revenue Var % to Budget,"DIVIDE([Revenue Var to Budget], [RevenueTY])",Double
+Fact,RevenueTY,"CALCULATE([Total Revenue], FILTER(Scenario, Scenario[Scenario]=""Actual""))",Double
+Fact,Sum of Revenue,SUM('Fact'[Revenue]),Double

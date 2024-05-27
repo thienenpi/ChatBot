@@ -1,0 +1,10 @@
+Name,Columns
+BU,"['BU Key', 'BU', 'Division', 'Executive_id']"
+Customer,"['Customer', 'Country/Region', 'Name', 'City', 'Postal Code', 'State', 'Industry ID']"
+Date,"['YearPeriod', 'Year', 'Period', 'Date', 'Month', 'QtrID', 'Qtr']"
+Executive,"['ID', 'Name', 'Img']"
+Fact,"['Customer Key', 'Product Key', 'BU Key', 'Scenario Key', 'Revenue', 'Material Costs', 'Labor Costs Variable', 'Taxes', 'Rev for Exp Travel', 'Travel Expenses', 'Cost Third Party', 'Subscription Revenue', 'YearPeriod']"
+Industry,"['ID', 'Industry', 'Image']"
+Product,"['Product Key', 'Product']"
+Scenario,"['Scenario Key', 'Scenario']"
+State,"['StateCode', 'State', 'Region']"
