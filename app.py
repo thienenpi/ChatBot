@@ -1,17 +1,19 @@
 import streamlit as st
 import pandas as pd
 
-from measure import user_proxy, assistant, get_measures_from_response
-from query import execute_query, QueryGenerator
-from convert_data import convert_data
+from parameters.measure import user_proxy, assistant, get_measures_from_response
+from utils.query import execute_query, QueryGenerator
+from utils.convert_data import convert_data
 
 st.set_page_config(page_title="Chatbot", page_icon="🤖", layout="wide")
-pd.set_option('display.float_format', lambda x: '%.4f' % x)
 
-# with st.sidebar:
+with st.sidebar:
 #     openai_api_key = st.text_input("Azure OpenAI API Key", key="chatbot_api_key", type="password")
-#     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-#     "[View the source code]()"
+    # "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+    "TCData Chatbot - Version 0.0.1:"
+    "- Turn on tcfabric before asking questions"
+    "- Only MEASURES are supported for now"
+    "- Conversation memory is not finished yet"
 
 st.title("TCData Chatbot")
 st.caption("🚀 A Power BI chatbot powered by TCData")

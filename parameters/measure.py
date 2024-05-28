@@ -1,11 +1,14 @@
 from autogen import AssistantAgent, UserProxyAgent
 from dotenv import load_dotenv
 from typing import List
-import os
 
-from prompts import measure_prompt
+import os
+import streamlit as st
+
+from utils.prompts import measure_prompt
 
 load_dotenv()
+@st.cache_resource
 
 def get_measures_from_response(response: str) -> List[str]:
     measures = []

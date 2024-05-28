@@ -1,7 +1,10 @@
 import pandas as pd
+import streamlit as st
 from requests.models import Response
 
-from query import execute_query
+from utils.query import execute_query
+
+@st.cache_resource
 
 def convert_column_name(column_name: str) -> str:
   return column_name[1:-1]
@@ -15,4 +18,3 @@ def convert_data(res: Response) -> pd.DataFrame:
     df = pd.DataFrame(data=data['rows'])
     df.columns = [convert_column_name(col) for col in df.columns]
     return df.to_markdown(index=False)
-

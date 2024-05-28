@@ -2,3 +2,4 @@ streamlit
 pyautogen
 python-dotenv
 pandas
+tabulate

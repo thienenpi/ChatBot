@@ -3,7 +3,7 @@ import os
 from requests.models import Response
 
 from utils.query_generator import QueryGenerator
-from access_token import get_access_token
+from auth.access_token import get_access_token
 
 datasetId = os.getenv('datasetId')
 groupId = os.getenv('groupId')
