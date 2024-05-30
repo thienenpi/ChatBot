@@ -4,6 +4,7 @@ __pycache__
 
 # local.env
 .env
+config.yaml
 
 # docker
 .dockerignore

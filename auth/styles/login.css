@@ -1,0 +1,25 @@
+[data-testid="stAppViewContainer"] {
+    background-image: url('https://tcdata.vn/wp-content/uploads/2022/08/banner_home-1536x812.jpg');
+    background-size: cover;
+}
+
+[data-testid="stHeader"] {
+    display: none;
+}
+
+[data-testid="myHeader"] {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px 20px 20px 20px;
+}
+
+[data-testid="stForm"] {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+[data-testid="stNotification"] {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 20px;
+}

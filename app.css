@@ -1,0 +1,44 @@
+[data-testid="baseButton-headerNoPadding"] {
+    background-color: white;
+}
+
+[data-testid="baseButton-header"] {
+    background-color: white;
+}
+
+/* [data-testid="stHeader"] {
+    display: none;
+} */
+
+[data-testid="myHeader"] {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px 20px 0 80px;
+    z-index: 99;
+}
+
+[data-testid="stHeading"] {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 0 10px 0 10px;
+}
+
+[data-testid="stCaptionContainer"] {
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    padding: 0 10px 0 10px;
+
+}
+
+[data-testid="stChatMessage"] {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* [data-testid="chatAvatarIcon-assistant"] {
+    background-image: url('https://tcdata.vn/wp-content/themes/tcdata/assets/images/logo_green.svg');
+} */
+
+div.st-emotion-cache-uhkwx6.ea3mdgi6 {
+    background-color: rgba(0, 0, 0, 0);
+}

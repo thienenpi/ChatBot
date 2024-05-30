@@ -3,3 +3,4 @@ pyautogen
 python-dotenv
 pandas
 tabulate
+streamlit-authenticator
