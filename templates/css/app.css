@@ -1,0 +1,66 @@
+/* #MainMenu {
+  visibility: hidden;
+} */
+
+[data-testid="stHeader"] {
+    visibility: hidden;
+}
+
+[data-testid="baseButton-headerNoPadding"] {
+  background-color: white;
+}
+
+[data-testid="baseButton-header"] {
+  background-color: white;
+}
+
+[data-testid="myHeader"] {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px 80px 0 80px;
+    z-index: 99;
+}
+
+[data-testid="stHeading"] {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 0 10px 0 10px;
+}
+
+[data-testid="stCaptionContainer"] {
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 0 10px 0 10px;
+}
+
+[data-testid="stChatMessage"] {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 10px 20px 10px;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+div.st-emotion-cache-1eo1tir {
+  padding-top: 1rem;
+}
+
+div.st-emotion-cache-uhkwx6.ea3mdgi6 {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+img.st-emotion-cache-p4micv {
+  object-fit: contain;
+}
