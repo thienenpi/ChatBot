@@ -4,3 +4,5 @@ python-dotenv
 pandas
 tabulate
 streamlit-authenticator
+azure-identity
+azure-search-documents

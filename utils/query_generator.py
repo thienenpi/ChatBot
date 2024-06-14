@@ -45,6 +45,7 @@ class QueryGenerator:
 
         return dax_string
 
+    @staticmethod
     def _parse_column_reference(column_spec: str) -> Tuple[Optional[str], str]:
         table_name = None
         column_name = column_spec

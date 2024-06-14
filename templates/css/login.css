@@ -1,25 +1,56 @@
 [data-testid="stAppViewContainer"] {
-    background-image: url('https://tcdata.vn/wp-content/uploads/2022/08/banner_home-1536x812.jpg');
-    background-size: cover;
+  background-image: url("https://storagetcdata.blob.core.windows.net/images/banner_home.png");
+  background-size: cover;
+}
+
+[data-testid="stSidebarContent"] {
+  background-color: white;
+}
+
+[data-testid="baseButton-secondary"] {
+  background-size: cover;
+  background-image: /* Gradient in Hex */ linear-gradient(
+    to right,
+    #7bc456 0%,
+    16.447368264198303%,
+    #4cbd8e 32.894736528396606%,
+    66.4473682641983%,
+    #12b7c4 100%
+  );
+
+  /* Gradient in RGBA */
+  /* linear-gradient(to right, rgba(123, 196, 86, 1) 0%, 16.447368264198303%, rgba(76, 189, 142, 1) 32.894736528396606%, 66.4473682641983%, rgba(18, 183, 196, 1) 100%);
+    ; */
 }
 
 [data-testid="stHeader"] {
-    display: none;
+  display: none;
 }
 
 [data-testid="myHeader"] {
-    background-color: rgba(0, 0, 0, 0);
-    padding: 20px 20px 0 80px;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 20px 80px 0 80px;
+  z-index: 99;
+}
+
+[data-testid="stHeading"] {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 0 10px 0 10px;
 }
 
 [data-testid="stForm"] {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 [data-testid="stNotification"] {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+div.st-emotion-cache-1jicfl2 {
+  padding: 6rem 30rem 10rem 30rem;
 }

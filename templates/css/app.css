@@ -3,28 +3,20 @@
 } */
 
 [data-testid="stHeader"] {
-    visibility: hidden;
+  visibility: hidden;
+}
+
+[data-testid="myHeader"] {
+  visibility: hidden;
 }
 
 [data-testid="baseButton-headerNoPadding"] {
   background-color: white;
 }
 
-[data-testid="baseButton-header"] {
+/* [data-testid="baseButton-header"] {
   background-color: white;
-}
-
-[data-testid="myHeader"] {
-    background-color: rgba(0, 0, 0, 0);
-    padding: 20px 80px 0 80px;
-    z-index: 99;
-}
-
-[data-testid="stHeading"] {
-  background-color: white;
-  border-radius: 10px 10px 0 0;
-  padding: 0 10px 0 10px;
-}
+} */
 
 [data-testid="stCaptionContainer"] {
   background-color: white;
@@ -42,11 +34,59 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+[aria-label="Chat message from user"] .st-emotion-cache-vdokb0.e1nzilvr4 {
+  display: flex;
+  justify-content: end;
+}
+
+div.st-emotion-cache-1c7y2kd {
+  flex-direction: row-reverse;
+}
+
 div.st-emotion-cache-1eo1tir {
   padding-top: 1rem;
 }
 
+div.st-emotion-cache-7tauuy {
+  padding: 1rem 10rem 10rem;
+}
+
+.st-emotion-cache-qdbtli {
+  padding: 1rem 10rem 55px 10rem;
+}
+
+div.st-emotion-cache-1jicfl2 {
+  padding: 1rem 2rem 10rem 2rem;
+}
+
+/* chat input when render citation */
+
+
 div.st-emotion-cache-uhkwx6.ea3mdgi6 {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+div.st-emotion-cache-1kyxreq {
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+[data-testid="stDataFrame"] {
+  margin-top: 2rem;
+}
+
+.st-aw {
+  background-image: linear-gradient(
+    to right,
+    #7bc456 0%,
+    16.447368264198303%,
+    #4cbd8e 32.894736528396606%,
+    66.4473682641983%,
+    #12b7c4 100%
+  );
   background-color: rgba(0, 0, 0, 0);
 }
 
