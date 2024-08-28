@@ -1,3 +1,5 @@
+import streamlit as st
+
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
 from azure.search.documents.models import (QueryType, QueryCaptionType, QueryAnswerType, VectorizedQuery)
@@ -6,6 +8,8 @@ from openai import AzureOpenAI
 from typing import TypedDict
 
 from config import *
+from agents.financial_analyzer.document_summarizer import document_summarizer, get_summarization_from_result
+from agents.user_proxy import user_proxy
 
 class AzureAISearch():
     endpoint: str
@@ -43,6 +47,30 @@ class AzureAISearch():
         self.search_client = SearchClient(endpoint=self.endpoint, index_name=self.index_name, credential=self.credentials)
         self.openai_client = AzureOpenAI(azure_endpoint=azure_endpoint, azure_deployment=azure_deployment, api_key=api_key, api_version=api_version)
 
+    def get_summary(self, query: str, results: list[dict]) -> str:
+        analytics = ""
+
+        for index, result in enumerate(results):
+            analytic = f"{index + 1}: {result['content']}"
+            analytics += analytic + "\n\n"
+        
+        if analytics == "":
+            analytics = "No information found."
+
+        message = """\
+Document:
+{analytics}\
+Question:
+{query}""".format(analytics=analytics, query=query)
+
+        chat_result = user_proxy.initiate_chat(
+            recipient=document_summarizer,
+            message=message
+        )
+
+        result = chat_result.chat_history[-1]['content']
+        return get_summarization_from_result(result=result)
+
     def compute_text_embedding(self, query: str):
         SUPPORTED_DIMENSIONS_MODEL = {
             "text-embedding-ada-002": False,
@@ -72,11 +100,11 @@ class AzureAISearch():
             search_text=query,
             search_fields=['content'],
             semantic_configuration_name='default',
-            query_type=QueryType.SEMANTIC,
-            vector_queries=[vector_query],
+            query_type=QueryType.FULL,
+            # vector_queries=[vector_query],
             top=self.number_results_to_return,
-            query_caption=QueryCaptionType.EXTRACTIVE, 
-            query_answer=QueryAnswerType.EXTRACTIVE,
+            # query_caption=QueryCaptionType.EXTRACTIVE, 
+            # query_answer=QueryAnswerType.EXTRACTIVE,
         )
 
         return self.__get_results_to_return(results=results)
@@ -85,9 +113,11 @@ class AzureAISearch():
         results_to_return = []
 
         for result in results:
+            # if result['@search.score'] < 8:
+            #     continue
+
             results_to_return.append({
                 "content": result['content'],
-                "caption": result['@search.captions'][0],
                 "sourcepage": result['sourcepage'],
                 "sourcefile": result['sourcefile'],
             })

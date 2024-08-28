@@ -21,36 +21,36 @@ from utils.loader import load_css, load_html
 from utils.citation import get_citation
 
 st.set_page_config(
-    page_title="Chatbot", 
-    page_icon="https://tcdata.vn/wp-content/themes/tcdata/assets/images/favicon.png",
+    # page_title="Chatbot", 
+    # page_icon="https://tcdata.vn/wp-content/themes/tcdata/assets/images/favicon.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-with open('./config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+# with open('./config.yaml') as file:
+#     config = yaml.load(file, Loader=SafeLoader)
 
-authenticator = stauth.Authenticate(
-    config['credentials'],
-    config['cookie']['name'],
-    config['cookie']['key'],
-    config['cookie']['expiry_days'],
-    config['pre-authorized']
-)
+# authenticator = stauth.Authenticate(
+#     config['credentials'],
+#     config['cookie']['name'],
+#     config['cookie']['key'],
+#     config['cookie']['expiry_days'],
+#     config['pre-authorized']
+# )
 
-def login():
-    html = load_css('templates/css/login.css') + load_html('templates/html/login.html')
-    st.markdown(html, unsafe_allow_html=True)
-    return authenticator.login()
+# def login():
+#     html = load_css('templates/css/login.css') + load_html('templates/html/login.html')
+#     st.markdown(html, unsafe_allow_html=True)
+#     return authenticator.login()
 
-try:
-    login()
-except LoginError as e:
-    st.error(e)
+# try:
+#     login()
+# except LoginError as e:
+#     st.error(e)
 
 def render_heading():
-    with st.container():
-        st.image("https://storagetcdata.blob.core.windows.net/images/logo_green.svg")
+    # with st.container():
+    #     st.image("https://storagetcdata.blob.core.windows.net/images/logo_green.svg")
     html = load_css('templates/css/app.css') + load_html('templates/html/app.html')
     st.markdown(html, unsafe_allow_html=True)
 
@@ -74,7 +74,7 @@ def render_chat_input(mode: str):
 
         # Display assistant response in chat message container
         with st.spinner("Generating response..."):
-            if mode == "Chatbot":
+            if mode == "Data Chatbot":
                 chat_results = initiate_chats([
                     {
                         "sender": user_proxy,
@@ -128,17 +128,12 @@ def render_chat_input(mode: str):
                 st.session_state.messages.append(assistant_message)            
             else:
                 results = searcher.get_results_semantic_search(query=prompt)
-                analytics = ""
-
-                for index, result in enumerate(results):
-                    analytic = f"{index + 1}: {result['caption'].text}"
-                    analytics += analytic + "\n\n"
-
+                summary = searcher.get_summary(query=prompt, results=results)
                 assistant_message = ChatMessage(
                     sender='assistant',
                     message=MessageContent(
                         results=results,
-                        summary=analytics
+                        summary=summary
                     ),
                     mode=mode
                 )
@@ -152,11 +147,11 @@ def main():
 
         mode = st.radio(
             label="**Select a chat mode**",
-            options=("Search document", "Chatbot"), 
+            options=("Document Search", "Data Chatbot"), 
             key="mode", 
             horizontal=True,
         )
-        authenticator.logout()
+        # authenticator.logout()
 
         # "TCData Chatbot - Version 0.0.3:"
         # "- Added financial analyzer."
@@ -179,7 +174,7 @@ def main():
             ChatMessage(
                 sender="assistant",
                 message=MessageContent(
-                    prompt="Welcome to TCData Chatbot! How can I help you today?"
+                    prompt="Welcome to TCData AI Services! How can I help you today?"
                 ),
                 mode=mode
             )
@@ -189,10 +184,7 @@ def main():
         st.session_state.citation = ""
 
     if 'single_column' not in st.session_state:
-        st.session_state.single_column = True   
-
-    if "citation" not in st.session_state:
-        st.session_state.citation = ""
+        st.session_state.single_column = True
 
     if st.session_state.single_column:
         # Display chat messages from history on app rerun
@@ -208,9 +200,9 @@ def main():
             st.markdown(pdf_display, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    if st.session_state["authentication_status"] is True:
-        main()
-    elif st.session_state["authentication_status"] is False:
-        st.error('Username/password is incorrect')
-    elif st.session_state["authentication_status"] is None:
-        st.warning('Please enter your username and password')
+    # if st.session_state["authentication_status"] is True:
+    main()
+    # elif st.session_state["authentication_status"] is False:
+    #     st.error('Username/password is incorrect')
+    # elif st.session_state["authentication_status"] is None:
+    #     st.warning('Please enter your username and password')

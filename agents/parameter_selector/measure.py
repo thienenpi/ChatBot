@@ -23,7 +23,7 @@ def get_measures_from_response(response: str) -> List[str]:
     return [measure for measure in measures if measure != '']
 
 measures_selector = AssistantAgent(
-    name="Measures selector",
+    name="Measures_selector",
     system_message=measure_prompt,
     llm_config=llm_config,
     max_consecutive_auto_reply=2,

@@ -11,7 +11,7 @@ def get_analytics_from_result(result: str) -> str:
     return analytics
 
 financial_analyzer = AssistantAgent(
-    name="Financial analyzer",
+    name="Financial_analyzer",
     system_message=financial_analyzer_prompt,
     llm_config=llm_config,
     max_consecutive_auto_reply=2,

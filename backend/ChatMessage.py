@@ -7,8 +7,9 @@ from components.chat_message import (
     render_chart, 
     render_analytics, 
     get_avatar, 
-    render_citation, 
-    render_view_citation_button)
+    render_view_citation_button
+)
+from utils.loader import load_html, load_css
 
 class MessageContent:
     data: Optional[pd.DataFrame] = None
@@ -50,14 +51,16 @@ class MessageContent:
     def _render_results_summary(self, re_render: bool):
         # Implement rendering logic for results and summary
         st.markdown(self.summary) if re_render else render_analytics(analytics=self.summary)
-        st.markdown("**Citation:**\n")
+        if len(self.results) > 0:
+            st.markdown("**Citation:**\n")
+        else:
+            st.markdown("**No citation found.**\n")
         for index, result in enumerate(self.results):
-            render_view_citation_button(index=index, citation=result['sourcepage']) 
+            render_view_citation_button(index=index, citation=str(result['sourcefile']).split("/")[-1] + "#" + str(result['sourcepage'])) 
 
     def _render_prompt(self):
         # Implement rendering logic for prompt
         st.markdown(self.prompt)
-
 
 class ChatMessage:
     sender: str

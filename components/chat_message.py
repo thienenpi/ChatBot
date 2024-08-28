@@ -1,9 +1,12 @@
 import streamlit as st
 import pandas as pd
-import time
 import altair as alt
+import time
+import secrets
 
 from typing import Any
+
+from agents.parameter_selector.data_visualization import get_column_name
 
 def stream_data(analysis: str):
     for word in analysis.split(" "):
@@ -27,7 +30,7 @@ def render_chart(visualization: dict, data: pd.DataFrame):
     if visualization['chart_type'] == 'line chart':
         line_chart = alt.Chart(data).mark_line().encode(
             y=alt.Y(visualization['y_axis']),
-            x=alt.X(visualization['x_axis'], sort=None),
+            x=alt.X(visualization['x_axis'], title=get_column_name(visualization["x_axis"]), sort=None),
         ).properties(
             height=400, width=700,
             title="Sale (fixed)"
@@ -59,7 +62,9 @@ def re_render_analytics(analytics: str):
 
 def render_view_citation_button(index: int, citation: str):
     label = f'{index + 1}' + "\. " + citation
-    st.button(label=label, on_click=lambda: render_citation(citation=citation))
+    # create random string for key to avoid error
+    random_key = secrets.token_hex(8)  # Example: 'a1b2c3d4'
+    st.button(key=random_key, label=label, on_click=lambda: render_citation(citation=citation))
 
 def render_citation(citation: str):
     if citation == st.session_state.citation or st.session_state.citation == "":

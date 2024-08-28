@@ -33,7 +33,7 @@ def get_columns_from_response(response: str) -> List[str]:
     return [column for column in columns if column != '']
 
 columns_selector = AssistantAgent(
-    name="Columns selector",
+    name="Columns_selector",
     system_message=columns_prompt,
     llm_config=llm_config,
     max_consecutive_auto_reply=2,

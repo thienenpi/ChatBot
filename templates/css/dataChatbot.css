@@ -1,6 +1,5 @@
 [data-testid="stAppViewContainer"] {
-    background-color: #b4dec4;
-    flex: 1;
+    background-color: #effff5;
     /* background: linear-gradient(to right, #309B6D 0%, #309B6D 23.153409361839294%, #07AA8D 46.30681872367859%, #07AA8D 73.1534093618393%, #0D5758 100%); */
 }
 
@@ -12,15 +11,8 @@
     visibility: hidden;
 }
 
-[data-testid="stSidebar"] {
-    background-color: white;
-    flex: 2;
-}
-[data-testid="ScrollToBottomContainer"] {
-    flex: 8;
-}
-
-[data-testid="stSidebarNav"] {
+[data-testid="stSidebar"],
+[data-testid="collapsedControl"] {
     display: none;
 }
 
@@ -48,8 +40,7 @@
     color: white;
 }
 
-p,
-textarea.st-b8 {
+p, textarea.st-b8 {
     font-size: 13px;
 }
 
@@ -119,7 +110,7 @@ div.st-emotion-cache-7tauuy {
 /* chat input when render citation */
 
 div.st-emotion-cache-uhkwx6.ea3mdgi6 {
-    background-color: #b4dec4;
+    background-color: #effff5;
     /* background: linear-gradient(to right, #309B6D 0%, #309B6D 23.153409361839294%, #07AA8D 46.30681872367859%, #07AA8D 73.1534093618393%, #0D5758 100%); */
 }
 
